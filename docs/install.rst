@@ -20,7 +20,7 @@ Installing
 
 Requirements
 ============
-celery and django-celery must be installed, however if you do not wish to
+celery must be installed, however if you do not wish to
 actually use celery you can simply set CELERY_ALWAYS_EAGER = True in your
 settings and it will behave as if celery was not configured.
 

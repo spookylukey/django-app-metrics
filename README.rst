@@ -33,12 +33,11 @@ Documentation can be found at ReadTheDocs_.
 Requirements
 ============
 
-Celery_ and `django-celery`_ must be installed, however if you do not wish to
+Celery_ must be installed, however if you do not wish to
 actually use Celery you can simply set ``CELERY_ALWAYS_EAGER = True`` in your
 settings and it will behave as if Celery was not configured.
 
 .. _Celery: http://celeryproject.org/
-.. _`django-celery`: http://ask.github.com/django-celery/
 
 Django 1.2 and above
 

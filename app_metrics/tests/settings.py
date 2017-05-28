@@ -24,7 +24,7 @@ TEST_RUNNER = 'django_coverage.coverage_runner.CoverageRunner'
 COVERAGE_MODULE_EXCLUDES = [
     'tests$', 'settings$', 'urls$',
     'common.views.test', '__init__', 'django',
-    'migrations', 'djcelery'
+    'migrations',
 ]
 
 COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(BASE_PATH, 'coverage')
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app_metrics',
     'app_metrics.tests',
-    'djcelery',
     'django_coverage'
 ]
 

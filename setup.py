@@ -24,7 +24,6 @@ setup(
     },
     install_requires = [
         'celery',
-        'django-celery',
     ],
     tests_require = ['mock', 'django-coverage', 'coverage'],
     classifiers=[
