@@ -4,6 +4,14 @@ from django.conf import settings
 from django.db import models, IntegrityError
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
+
+
+def now():
+    if settings.USE_TZ:
+        return timezone.now()
+    else:
+        return datetime.datetime.now()
 
 
 class Metric(models.Model):
@@ -53,7 +61,7 @@ class MetricItem(models.Model):
     """ Individual metric items """
     metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
     num = models.IntegerField(_('number'), default=1)
-    created = models.DateTimeField(_('created'), default=datetime.datetime.now)
+    created = models.DateTimeField(_('created'), default=now)
 
     class Meta:
         verbose_name = _('metric item')
@@ -141,8 +149,8 @@ class Gauge(models.Model):
     name = models.CharField(_('name'), max_length=50)
     slug = models.SlugField(_('slug'), unique=True, max_length=60)
     current_value = models.DecimalField(_('current value'), max_digits=15, decimal_places=6, default='0.00')
-    created = models.DateTimeField(_('created'), default=datetime.datetime.now)
-    updated = models.DateTimeField(_('updated'), default=datetime.datetime.now)
+    created = models.DateTimeField(_('created'), default=now)
+    updated = models.DateTimeField(_('updated'), default=now)
 
     class Meta:
         verbose_name = _('gauge')
@@ -155,5 +163,5 @@ class Gauge(models.Model):
         if not self.id and not self.slug:
             self.slug = slugify(self.name)
 
-        self.updated = datetime.datetime.now()
+        self.updated = now()
         return super(Gauge, self).save(*args, **kwargs)
