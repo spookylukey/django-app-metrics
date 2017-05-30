@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('num', models.BigIntegerField(default=0, verbose_name='number')),
                 ('created', models.DateField(default=datetime.date.today, verbose_name='created')),
-                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric')),
+                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'day metric',
@@ -59,7 +59,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('num', models.IntegerField(default=1, verbose_name='number')),
                 ('created', models.DateTimeField(default=datetime.datetime.now, verbose_name='created')),
-                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric')),
+                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'metric item',
@@ -72,7 +72,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('num', models.BigIntegerField(default=0, verbose_name='number')),
                 ('created', models.DateField(default=datetime.date.today, verbose_name='created')),
-                ('metric', models.ForeignKey(verbose_name=b'metric', to='app_metrics.Metric')),
+                ('metric', models.ForeignKey(verbose_name=b'metric', to='app_metrics.Metric', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'month metric',
@@ -102,7 +102,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('num', models.BigIntegerField(default=0, verbose_name='number')),
                 ('created', models.DateField(default=datetime.date.today, verbose_name='created')),
-                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric')),
+                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'week metric',
@@ -115,7 +115,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('num', models.BigIntegerField(default=0, verbose_name='number')),
                 ('created', models.DateField(default=datetime.date.today, verbose_name='created')),
-                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric')),
+                ('metric', models.ForeignKey(verbose_name='metric', to='app_metrics.Metric', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'year metric',

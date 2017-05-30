@@ -51,7 +51,7 @@ class MetricSet(models.Model):
 
 class MetricItem(models.Model):
     """ Individual metric items """
-    metric = models.ForeignKey(Metric, verbose_name=_('metric'))
+    metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
     num = models.IntegerField(_('number'), default=1)
     created = models.DateTimeField(_('created'), default=datetime.datetime.now)
 
@@ -68,7 +68,7 @@ class MetricItem(models.Model):
 
 class MetricDay(models.Model):
     """ Aggregation of Metrics on a per day basis """
-    metric = models.ForeignKey(Metric, verbose_name=_('metric'))
+    metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
     num = models.BigIntegerField(_('number'), default=0)
     created = models.DateField(_('created'), default=datetime.date.today)
 
@@ -84,7 +84,7 @@ class MetricDay(models.Model):
 
 class MetricWeek(models.Model):
     """ Aggregation of Metrics on a weekly basis """
-    metric = models.ForeignKey(Metric, verbose_name=_('metric'))
+    metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
     num = models.BigIntegerField(_('number'), default=0)
     created = models.DateField(_('created'), default=datetime.date.today)
 
@@ -101,7 +101,7 @@ class MetricWeek(models.Model):
 
 class MetricMonth(models.Model):
     """ Aggregation of Metrics on monthly basis """
-    metric = models.ForeignKey(Metric, verbose_name=('metric'))
+    metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=('metric'))
     num = models.BigIntegerField(_('number'), default=0)
     created = models.DateField(_('created'), default=datetime.date.today)
 
@@ -119,7 +119,7 @@ class MetricMonth(models.Model):
 
 class MetricYear(models.Model):
     """ Aggregation of Metrics on a yearly basis """
-    metric = models.ForeignKey(Metric, verbose_name=_('metric'))
+    metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
     num = models.BigIntegerField(_('number'), default=0)
     created = models.DateField(_('created'), default=datetime.date.today)
 
