@@ -1,11 +1,7 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import url
 
-from app_metrics.views import *
+from app_metrics import views
 
-urlpatterns = patterns('',
-        url(
-            regex   = r'^reports/$',
-            view    = metric_report_view,
-            name    = 'app_metrics_reports',
-            ),
-    )
+urlpatterns = [
+    url(r'^reports/$', views.metric_report_view, name='app_metrics_reports'),
+]

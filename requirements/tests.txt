@@ -1,5 +1,3 @@
-coverage==3.5.2
-django-coverage==1.2.2
 mock==0.8.0
 celery==4.0.2
 # python-statsd==1.5.4
