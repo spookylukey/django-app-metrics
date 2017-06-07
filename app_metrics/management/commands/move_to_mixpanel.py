@@ -1,3 +1,5 @@
+from __future__ import unicode_literals, print_function
+
 from django.core.management.base import BaseCommand
 
 from app_metrics.models import MetricItem
@@ -17,7 +19,7 @@ class Command(BaseCommand):
 
         # If not using Mixpanel this command is a NOOP
         if backend != 'app_metrics.backends.mixpanel':
-            print "You need to set the backend to MixPanel"
+            print("You need to set the backend to MixPanel")
             return
 
         items = MetricItem.objects.all()

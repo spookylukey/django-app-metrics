@@ -1,12 +1,11 @@
 import base64
 import json
-import urllib
-import urllib2
 import datetime
 
 from celery import shared_task
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from six.moves import urllib
 
 from app_metrics.models import Metric, MetricItem, Gauge
 
@@ -80,10 +79,10 @@ def mixpanel_metric_task(slug, num, properties=None, **kwargs):
     params = {"event": slug, "properties": properties}
     b64_data = base64.b64encode(json.dumps(params))
 
-    data = urllib.urlencode({"data": b64_data})
-    req = urllib2.Request(url, data)
+    data = urllib.parse.urlencode({"data": b64_data})
+    req = urllib.request.Request(url, data)
     for i in range(num):
-        response = urllib2.urlopen(req)
+        response = urllib.request.urlopen(req)
         if response.read() == '0':
             raise MixPanelTrackError(u'MixPanel returned 0')
 

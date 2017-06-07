@@ -1,3 +1,5 @@
+from __future__ import unicode_literals, print_function
+
 import datetime 
 import string
 
@@ -27,8 +29,8 @@ class Command(BaseCommand):
 
         # This command is a NOOP if using the Mixpanel backend 
         if backend == 'app_metrics.backends.mixpanel': 
-            print "Useless use of metrics_send_email when using Mixpanel backend."
-            return 
+            print("Useless use of metrics_send_email when using Mixpanel backend.")
+            return
 
         # Determine if we should also send any weekly or monthly reports 
         today = datetime.date.today() 

@@ -3,6 +3,7 @@ from django.test import TestCase
 from django.conf import settings
 from app_metrics.utils import metric, gauge
 
+
 class RedisTests(TestCase):
     def setUp(self):
         super(RedisTests, self).setUp()
