@@ -14,6 +14,7 @@ from app_metrics.models import Metric, MetricItem, MetricDay, MetricWeek, Metric
 from app_metrics.utils import *
 from app_metrics.trending import _trending_for_current_day, _trending_for_yesterday, _trending_for_week, _trending_for_month, _trending_for_year
 
+
 class MetricCreationTests(TestCase):
 
     def test_auto_slug_creation(self):
@@ -57,9 +58,11 @@ class MetricCreationTests(TestCase):
         self.assertEqual(current_count[1].num, 1)
         self.assertEqual(current_count[2].num, 1)
 
+
 class MetricAggregationTests(TestCase):
 
     def setUp(self):
+        super(MetricAggregationTests, self).setUp()
         self.metric1 = create_metric(name='Test Aggregation1', slug='test_agg1')
         self.metric2 = create_metric(name='Test Aggregation2', slug='test_agg2')
 
@@ -72,7 +75,6 @@ class MetricAggregationTests(TestCase):
 
     def test_daily_aggregation(self):
         management.call_command('metrics_aggregate')
-
         day1 = MetricDay.objects.get(metric=self.metric1)
         day2 = MetricDay.objects.get(metric=self.metric2)
         self.assertEqual(day1.num, 2)
@@ -320,6 +322,7 @@ class MixpanelCommandTest1(TestCase):
 
     def tearDown(self):
         settings.APP_METRICS_BACKEND = self.old_backend
+
 
 class MixpanelCommandTest2(TestCase):
     """ Test out our management command works """
