@@ -40,6 +40,7 @@ class Metric(models.Model):
         else:
             return super(Metric, self).save(*args, **kwargs)
 
+
 class MetricSet(models.Model):
     """ A set of metrics that should be sent via email to certain users """
     name = models.CharField(_('name'), max_length=50)
@@ -58,6 +59,7 @@ class MetricSet(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class MetricItem(models.Model):
     """ Individual metric items """
     metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
@@ -75,6 +77,7 @@ class MetricItem(models.Model):
             'created': self.created
         }
 
+
 class MetricDay(models.Model):
     """ Aggregation of Metrics on a per day basis """
     metric = models.ForeignKey(Metric, on_delete=models.CASCADE, verbose_name=_('metric'))
@@ -90,6 +93,7 @@ class MetricDay(models.Model):
             'name': self.metric.name,
             'created': self.created
         }
+
 
 class MetricWeek(models.Model):
     """ Aggregation of Metrics on a weekly basis """
@@ -107,6 +111,7 @@ class MetricWeek(models.Model):
             'week': self.created.strftime("%U"),
             'year': self.created.strftime("%Y")
         }
+
 
 class MetricMonth(models.Model):
     """ Aggregation of Metrics on monthly basis """
@@ -149,7 +154,7 @@ class Gauge(models.Model):
     """
     name = models.CharField(_('name'), max_length=50)
     slug = models.SlugField(_('slug'), unique=True, max_length=60)
-    current_value = models.DecimalField(_('current value'), max_digits=15, decimal_places=6, default='0.00')
+    current_value = models.DecimalField(_('current value'), max_digits=15, decimal_places=6, default=0)
     created = models.DateTimeField(_('created'), default=now)
     updated = models.DateTimeField(_('updated'), default=now)
 

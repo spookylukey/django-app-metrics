@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=50, verbose_name='name')),
                 ('slug', models.SlugField(unique=True, max_length=60, verbose_name='slug')),
-                ('current_value', models.DecimalField(default=b'0.00', verbose_name='current value', max_digits=15, decimal_places=6)),
+                ('current_value', models.DecimalField(default=0, verbose_name='current value', max_digits=15, decimal_places=6)),
                 ('created', models.DateTimeField(default=datetime.datetime.now, verbose_name='created')),
                 ('updated', models.DateTimeField(default=datetime.datetime.now, verbose_name='updated')),
             ],
